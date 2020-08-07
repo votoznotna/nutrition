@@ -1,7 +1,7 @@
 ## Getting Started
 
 * Have [Git] (https://git-scm.com/downloads) installed.
-* Have [Node](https://git-scm.com/downloads) installed. 
+* Have [Node](https://nodejs.org/en/download/) installed. 
 * Run the following command from where is planning to have the project installed: 
 ```
 git clone git@github.com:votoznotna/nutrition.git

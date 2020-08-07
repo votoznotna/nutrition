@@ -14,11 +14,11 @@ const Header = ({ onReset }: Props) => {
 
     return (
         <>
-            <section style={headerStyle} className="ph3 f3 f2-m f1-l">
+            <section style={headerStyle} className="ph3 f2 f1-l">
                 <h6 className="mv0">
                     Nutrition List  
                 </h6>
-                <button onClick={onReset} className="f6-m f5-l fw6 pa2 br2 b--dark-green white bg-dark-green">
+                <button onClick={onReset} className="f6 f5-l fw6 pa2 br2 b--dark-green white bg-dark-green">
                     <i className="fa fa-refresh mr3" aria-hidden="true"> </i>
                     RESET DATA
                 </button>

@@ -215,7 +215,7 @@ const NutritionList = () => {
             <div className="ph2 pv4">
             <ControlBox selections={selections} onAddDessert={onAddDessert} onDeleteDesserts={onDeleteDesserts} />
             <div className="overflow-auto">
-                <table data-testid="nutrition-table" className="f6-m f8-l mw-100 w-100">
+                <table data-testid="nutrition-table" className="f6 f5-l mw-100 w-100">
                 <thead onClick={sortByField}>
                     <tr>
                     <th className={thFirstClassNames}>
