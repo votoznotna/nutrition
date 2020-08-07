@@ -1,3 +1,5 @@
+## Runtime demo: https://devmernstack.nutrition.com
+
 ## Getting Started
 
 * Have [Git] (https://git-scm.com/downloads) installed.
@@ -14,10 +16,7 @@ go triplemint directory
 npm install
 ```
 ```
-npm run test
-``` 
-```
-npm run dev
+npm start
 ``` 
 
 * Navigate http://localhost:3000/ in browser and enjoy the run.

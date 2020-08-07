@@ -4,7 +4,7 @@ import {
   } from '@apollo/client'
 
 const client = new ApolloClient({
-    uri:  `${window.location.protocol}//${window.location.hostname}:4000`,
+    uri:  `${window.location.protocol}//${window.location.hostname}:88`,
     cache: new InMemoryCache()
 });
 
