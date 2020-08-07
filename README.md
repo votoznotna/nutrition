@@ -7,7 +7,7 @@
 git clone git@github.com:votoznotna/nutrition.git
 ```
 ```
-go triplemint directory
+go nutrition directory
 ```
 * From the same folder run
 ```
