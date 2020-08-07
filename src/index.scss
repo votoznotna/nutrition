@@ -1,0 +1,65 @@
+@import '~font-awesome/css/font-awesome.css';
+@import '~tachyons/css/tachyons.css';
+
+
+body {
+  margin: 0;
+  padding: 0.5rem;
+  font-family: 'Courier New', 'Courier', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  background-color: #f3f4f3;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+table {
+  border-spacing: 0;
+}
+
+.bg-enable-light-pink {
+  background-color: #fededf;
+}
+
+.b--enable-light-pink {
+  border-color: #fededf;
+}
+
+.bg-double-light-gray {
+  background-color: #f3f4f3;
+}
+
+.bg-dark-yellow {
+ background-color: #ffb600;
+}
+
+.bg-disable-light-pink {
+  background-color: #ffe5e5;
+}
+
+.b--disalbe-light-pink {
+  border-color: #ffe5e5;
+}
+
+.validation--error {
+  background-color: #ffe5e5;
+}
+
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+input[type=checkbox], button {
+  cursor: pointer;
+}
+
+button {
+  font-family: 'Courier New', 'Courier';
+  outline: none;
+}
