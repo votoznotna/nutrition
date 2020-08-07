@@ -1,1 +1,1 @@
-web: ./node_modules/.bin/forever -m 5 api/src/server.js
+# web: ./node_modules/.bin/forever -m 5 api/src/server.js
