@@ -1,5 +1,3 @@
-## Runtime demo: https://devmernstack.nutrition.com
-
 ## Getting Started
 
 * Have [Git] (https://git-scm.com/downloads) installed.
