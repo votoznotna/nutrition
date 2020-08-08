@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { INutritionContext } from '../types';
-import { NutritionContext } from '../context/NutritionContext';
+import React, { useContext, FunctionComponent } from "react"
+import { INutritionContext } from '../types'
+import { NutritionContext } from '../context/NutritionContext'
 
-interface Props {
+interface IProps {
     onAddDessert: () => void,
     onDeleteDesserts: () => void
 }
@@ -10,12 +10,12 @@ interface Props {
 const buttonDisableClassNames = 'f6 f5-l fw6 b--disalbe-light-pink pv2 bg-disable-light-pink'
 const buttonEnableClassNames = 'f6 f5-l fw6 b--white pv2 pink bg-white'
   
-export const ControlBox = ({ onAddDessert,  onDeleteDesserts }: Props) => {
+const ControlBox: FunctionComponent<IProps> = ({ onAddDessert,  onDeleteDesserts }: IProps) => {
 
     const {
         state
       } = useContext<INutritionContext>(NutritionContext)
-      const { selections } = state 
+    const { selections } = state 
 
     return (
         <>
@@ -37,3 +37,5 @@ export const ControlBox = ({ onAddDessert,  onDeleteDesserts }: Props) => {
         </>
     )
 }
+
+export default ControlBox

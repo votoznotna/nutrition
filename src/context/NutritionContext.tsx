@@ -1,5 +1,5 @@
-import React, { useReducer, createContext, useCallback, FunctionComponent } from 'react';
-import { IDessert, INutritionState, INutritionContext } from '../types';
+import React, { useReducer, createContext, useCallback, FunctionComponent } from 'react'
+import { IDessert, INutritionState, INutritionContext } from '../types'
 
 const defaultNutritionState: INutritionState = {
     modal: false,
@@ -17,21 +17,20 @@ const defaultNutritionContextValue: INutritionContext = {
   setSortAsc: (value: boolean) => {},
   setDesserts: (value: IDessert[]) => {},
   setNewDessert: (value: IDessert) => {},
-  deleteDesserts: (value: string[]) => {},
+  setDeletedDesserts: (value: string[]) => {},
   sortDesserts: () => {}
 }
 
-export const NutritionContext = createContext<INutritionContext>(defaultNutritionContextValue);
+export const NutritionContext = createContext<INutritionContext>(defaultNutritionContextValue)
 
-const SET_MODAL = 'SET_MODAL';
-const SET_SELECTIONS = 'SET_SELECTIONS';
-const SET_DESSERTS = 'SET_DESSERTS';
-const NEW_DESSERT = 'NEW_DESSERT';
-const DELETE_DESSERTS = 'DELETE_DESSERTS';
-const SORT_DESSERTS = 'SORT_DESSERTS';
-const SET_SORT_FIELD = 'SET_SORT_FIELD';
-const SET_SORT_ASC = 'SET_SORT_ASC';
-
+const SET_MODAL = 'SET_MODAL'
+const SET_SELECTIONS = 'SET_SELECTIONS'
+const SET_DESSERTS = 'SET_DESSERTS'
+const NEW_DESSERT = 'NEW_DESSERT'
+const DELETE_DESSERTS = 'DELETE_DESSERTS'
+const SORT_DESSERTS = 'SORT_DESSERTS'
+const SET_SORT_FIELD = 'SET_SORT_FIELD'
+const SET_SORT_ASC = 'SET_SORT_ASC'
 
 const reducer = (state = defaultNutritionState, action: any) => {
   if (action.type === SET_MODAL) {
@@ -75,14 +74,14 @@ const reducer = (state = defaultNutritionState, action: any) => {
     return {...state, ...{data: sortedData}}
   }
 
-  return state;
-};
+  return state
+}
 
 type IProps = {
 }
 
-export const NutritionProvider: FunctionComponent<IProps> = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, defaultNutritionState);
+const NutritionProvider: FunctionComponent<IProps> = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, defaultNutritionState)
 
   const setModal = useCallback(value => {
       dispatch({
@@ -91,7 +90,7 @@ export const NutritionProvider: FunctionComponent<IProps> = ({ children }) => {
         })
     },
     [dispatch]
-  );
+  )
 
   const setSelections = useCallback(value => {
         dispatch({
@@ -100,7 +99,7 @@ export const NutritionProvider: FunctionComponent<IProps> = ({ children }) => {
         })
         },
         [dispatch]
-    );
+    )
 
     const setSortField = useCallback(value => {
         dispatch({
@@ -109,7 +108,7 @@ export const NutritionProvider: FunctionComponent<IProps> = ({ children }) => {
           })
         },
         [dispatch]
-    );
+    )
 
     const setSortAsc = useCallback(value => {
         dispatch({
@@ -118,7 +117,7 @@ export const NutritionProvider: FunctionComponent<IProps> = ({ children }) => {
             })
         },
         [dispatch]
-    );
+    )
 
     const setDesserts = useCallback(value => {
         dispatch({
@@ -127,7 +126,7 @@ export const NutritionProvider: FunctionComponent<IProps> = ({ children }) => {
             })
         },
         [dispatch]
-    );
+    )
 
     const setNewDessert = useCallback(value => {
         dispatch({
@@ -136,16 +135,16 @@ export const NutritionProvider: FunctionComponent<IProps> = ({ children }) => {
             })
         },
         [dispatch]
-    );
+    )
 
-    const deleteDesserts = useCallback(value => {
+    const setDeletedDesserts = useCallback(value => {
         dispatch({
             type: DELETE_DESSERTS, 
             payload: value
             })
         },
         [dispatch]
-    );
+    )
 
     const sortDesserts = useCallback(() => {
         dispatch({
@@ -153,8 +152,7 @@ export const NutritionProvider: FunctionComponent<IProps> = ({ children }) => {
             })
         },
         [dispatch]
-    );   
-
+    )  
 
   return (
     <NutritionContext.Provider
@@ -166,11 +164,13 @@ export const NutritionProvider: FunctionComponent<IProps> = ({ children }) => {
         setSortAsc,
         setDesserts,
         setNewDessert,
-        deleteDesserts,
+        setDeletedDesserts,
         sortDesserts
       }}
     >
       {children}
     </NutritionContext.Provider>
-  );
-};
+  )
+}
+
+export default NutritionProvider

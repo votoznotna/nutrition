@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import { MockedProvider } from "@apollo/react-testing"
-import { render } from '@testing-library/react';
-import App from '../components/App';
+import { render } from '@testing-library/react'
+import App from '../components/App'
 
 let emptyMock: any[] = []
 
@@ -11,7 +11,7 @@ test('renders page elements as expected', async () => {
       <App />
     </MockedProvider>)
 
-  expect(container).toMatchSnapshot();
+  expect(container).toMatchSnapshot()
 
   let nutritionTable = getByTestId('nutrition-table')
   expect(nutritionTable).toBeInTheDocument()
@@ -37,6 +37,6 @@ test('renders page elements as expected', async () => {
   let deleteButton = getByText("DELETE")
   expect(deleteButton).toBeInTheDocument()
 
-  expect(container).toMatchSnapshot();
+  expect(container).toMatchSnapshot()
 
-});
+})

@@ -1,20 +1,17 @@
-import React from "react";
+import React, { FunctionComponent } from "react"
 
-interface Props {
+interface IProps {
     onReset: () => void
 }
 
-const headerStyle:React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-}
+// const headerStyle: React.CSSProperties = {
+// }
  
-const Header = ({ onReset }: Props) => {
+const Header: FunctionComponent<IProps>  = ({ onReset }: IProps) => {
 
     return (
         <>
-            <section style={headerStyle} className="ph3 f2 f1-l">
+            <section className="flex items-center justify-between ph3 f2 f1-l">
                 <h6 className="mv0">
                     Nutrition List  
                 </h6>

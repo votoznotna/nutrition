@@ -35,6 +35,6 @@ export interface INutritionContext {
     setSortAsc: (value: boolean) => void,
     setDesserts: (value: IDessert[]) => void,
     setNewDessert: (value: IDessert) => void,
-    deleteDesserts: (value: string[]) => void,
+    setDeletedDesserts: (value: string[]) => void,
     sortDesserts: () => void
   }

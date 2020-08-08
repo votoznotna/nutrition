@@ -1,16 +1,16 @@
-import React, {useEffect, useRef, useContext} from "react";
-import { IDessert, INutritionContext } from '../types';
-import { NutritionContext } from '../context/NutritionContext';
+import React, {useEffect, useRef, useContext, FunctionComponent} from "react"
+import { IDessert, INutritionContext } from '../types'
+import { NutritionContext } from '../context/NutritionContext'
 
-interface Props {
+interface IProps {
     dessert: IDessert
-    // setSelections:  (value: string[] | ((prevVar: string[]) => string[])) => void;
+    // setSelections:  (value: string[] | ((prevVar: string[]) => string[])) => void
 }
 
-const tdClassNames = 'tc fw6 pv3 bb b--black-20';
+const tdClassNames = 'tc fw6 pv3 bb b--black-20'
 const tdFirstClassNames = `pl3 ${tdClassNames}`
   
-const DessertRow = ({ dessert }: Props) => {
+const DessertRow: FunctionComponent<IProps> = ({ dessert }: IProps) => {
     const selectionRowRef: any = useRef<HTMLInputElement>(null)
     const {
         state,
@@ -20,8 +20,8 @@ const DessertRow = ({ dessert }: Props) => {
   
     const rowSelect = () => {
         const target = selectionRowRef.current
-        const checked = !target.checked;
-        const id = target.getAttribute('id');
+        const checked = !target.checked
+        const id = target.getAttribute('id')
         target.checked = checked
         if(checked) {
             setSelections(selections.filter((item: string) => item !== id))
@@ -32,15 +32,15 @@ const DessertRow = ({ dessert }: Props) => {
     }
  
     useEffect(() => {
-        const dessertId = selectionRowRef.current.getAttribute('id');
+        const dessertId = selectionRowRef.current.getAttribute('id')
         if(selections.indexOf(dessertId) === -1 &&
             selectionRowRef.current.checked){
-                selectionRowRef.current.checked = false;
+                selectionRowRef.current.checked = false
         } else if (selections.indexOf(dessertId) !== -1 &&
                      !selectionRowRef.current.checked){
-                    selectionRowRef.current.checked = true;
+                    selectionRowRef.current.checked = true
         } 
-      }, [selections]);
+      }, [selections])
 
     return (
         <>
@@ -58,4 +58,4 @@ const DessertRow = ({ dessert }: Props) => {
     )
   }
 
-  export default DessertRow;
+  export default DessertRow

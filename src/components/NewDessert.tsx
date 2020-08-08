@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect } from "react";
-import { INewDessertInput } from '../types';
+import React, { useRef, useState, useEffect, FunctionComponent } from "react"
+import { INewDessertInput } from '../types'
 
-interface Props {
+interface IProps {
     onAddDessert: (input: INewDessertInput) => void
     onCancel: () => void
 }
@@ -9,9 +9,9 @@ interface Props {
 const inputClasses = 'pa2 input-reset black ba bg-transparent w-100'
 const errorClass = 'validation--error'
   
-const NewDessert = ({ onAddDessert, onCancel }: Props) => {
+const NewDessert: FunctionComponent<IProps> = ({ onAddDessert, onCancel }: IProps) => {
 
-    const [formValid, setFormValid] = useState(false);
+    const [formValid, setFormValid] = useState(false)
     const nameRef: any = useRef<HTMLInputElement>(null)
     const caloriesRef: any = useRef<HTMLInputElement>(null)
     const fatRef: any = useRef<HTMLInputElement>(null)
@@ -25,7 +25,7 @@ const NewDessert = ({ onAddDessert, onCancel }: Props) => {
     }, [])
 
     const onSubmit = (e: any) => {
-        e.preventDefault();
+        e.preventDefault()
 
         const submitValue: any = {
             name: nameRef.current.value,
@@ -46,7 +46,7 @@ const NewDessert = ({ onAddDessert, onCancel }: Props) => {
             caloriesRef.current.classList.add(errorClass)
             return
         }
-        submitValue.calories = +submitValue.calories;
+        submitValue.calories = +submitValue.calories
 
         fatRef.current.classList.remove(errorClass)
         if(!(submitValue.fat.toString().replace(/(^\s+|\s+$)/g,'') && validNumberRegex.test(submitValue.fat))) {
@@ -69,9 +69,9 @@ const NewDessert = ({ onAddDessert, onCancel }: Props) => {
         }
         submitValue.protein = +submitValue.protein
 
-        setFormValid(true);
-        onAddDessert(submitValue);
-        onCancel();
+        setFormValid(true)
+        onAddDessert(submitValue)
+        onCancel()
     }
 
     return (
@@ -120,4 +120,4 @@ const NewDessert = ({ onAddDessert, onCancel }: Props) => {
     )
 }
 
-export default NewDessert;
+export default NewDessert

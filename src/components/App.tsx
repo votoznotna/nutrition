@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import NutritionList from '../pages/NutritionList'
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
     <>
       <NutritionList />
     </>
-  );
+  )
 }
 
-export default App;
+export default App
