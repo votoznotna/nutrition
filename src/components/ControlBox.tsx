@@ -1,24 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import { INutritionContext } from '../types';
+import { NutritionContext } from '../context/NutritionContext';
 
 interface Props {
     onAddDessert: () => void,
     onDeleteDesserts: () => void
-    selections: string[]
 }
  
 const buttonDisableClassNames = 'f6 f5-l fw6 b--disalbe-light-pink pv2 bg-disable-light-pink'
-
 const buttonEnableClassNames = 'f6 f5-l fw6 b--white pv2 pink bg-white'
-
-const sectionStyle = {
-
-}
   
-export const ControlBox = ({ onAddDessert,  onDeleteDesserts, selections }: Props) => {
+export const ControlBox = ({ onAddDessert,  onDeleteDesserts }: Props) => {
+
+    const {
+        state
+      } = useContext<INutritionContext>(NutritionContext)
+      const { selections } = state 
 
     return (
         <>
-            <section style={sectionStyle} className="flex items-center justify-between mb0 w100 mw100 pa3 bg-enable-light-pink">
+            <section className="flex items-center justify-between mb0 w100 mw100 pa3 bg-enable-light-pink">
                 <div>
                     <label className="dark-pink f6 f5-l fw8">{`${selections.length} selected`}</label>
                 </div>

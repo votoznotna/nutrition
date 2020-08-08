@@ -72,14 +72,12 @@ const NewDessert = ({ onAddDessert, onCancel }: Props) => {
         setFormValid(true);
         onAddDessert(submitValue);
         onCancel();
-
     }
 
     return (
         <>
             <main className="pa4 flex items-center justify-center black-80">
                 <section className="flex items-center justify-center b--white bg-white ma2 pa4">
-
                     <form className="measure bw4 b--white bg-white" onSubmit={onSubmit} noValidate>
                     {!formValid && (<div  className="bg-dark-yellow white flex items-center justify-center pa2">
                         <i className="fa fa-exclamation-triangle mr2" aria-hidden="true"></i>
@@ -105,7 +103,6 @@ const NewDessert = ({ onAddDessert, onCancel }: Props) => {
                         <label className="db fw6 lh-copy f8" htmlFor="protein">Protein(g)*</label>
                         <input ref={proteinRef} required className={inputClasses}  type="text" name="protein"  id="protein" />
                     </div>
-
                     <div className="lh-copy mt3 flex items-center justify-center">
                     <button onClick={onCancel} className="f6 b--near-white fw6 ph3 pv2 green mr3 bg-white">
                                 <i className="fa fa-times mr3" aria-hidden="true"> </i>

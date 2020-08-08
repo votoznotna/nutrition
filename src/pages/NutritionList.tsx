@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import gql from 'graphql-tag'
 import { useQuery, useMutation } from '@apollo/react-hooks'
-import { IDessert, INewDessertInput } from '../types';
+import { IDessert, INewDessertInput, INutritionContext } from '../types';
 import DessertRow from '../components/DessertRow'
 import NewDessert from '../components/NewDessert'
 import Header from '../components/Header'
 import { ControlBox } from "../components/ControlBox";
+import { NutritionContext } from '../context/NutritionContext';
+
 
 const DESSERT_DETAILS = gql`
   fragment DessertDetails on Dessert {
@@ -52,11 +54,24 @@ const CREATE_DESSERT = gql`
   
 const NutritionList = () => {
 
-    const [modal, setModal] = useState<boolean>(false)
-    const [selections, setSelections] = useState<string[]>([])
-    const [data, setData] = useState<any>([])
-    const [sortField, setSortField] = useState<string>('created')
-    const [sortAsc, setSortAsc] = useState<boolean>(false)
+    const {
+      state,
+      setModal,
+      setSelections,
+      setSortField,
+      setSortAsc,
+      setDesserts,
+      setNewDessert,
+      deleteDesserts,
+      sortDesserts
+    } = useContext<INutritionContext>(NutritionContext)
+    const {
+      modal,
+      selections,
+      data,
+      sortField,
+      sortAsc
+    } = state 
     const allDessertsSelectorRef:any = useRef<HTMLInputElement>(null)
     const desserts: any = useQuery(GET_DESSERTS)
 
@@ -76,21 +91,19 @@ const NutritionList = () => {
         }
       })
 
-    const [deleteDessert] = useMutation<any>(DELETE_DESSERTS)
-    const [resetDessert] = useMutation<any>(RESET_DESSERTS)
+    const [deleteDessert, deletedDessert] = useMutation<any>(DELETE_DESSERTS)
+    const [resetDessert, resettedDessert] = useMutation<any>(RESET_DESSERTS)
 
     useEffect(() => {
-      // eslint-disable-next-line no-mixed-operators
-      setData([...(desserts && desserts.data && desserts.data.desserts || [])])
-    }, [desserts]);
+      setDesserts([...((desserts && desserts.data && desserts.data.desserts) || [])])
+    }, [desserts, setDesserts]);
 
     const onReset = () => {
       resetDessert({
         variables: {}
       }).then(
         res => {
-          // eslint-disable-next-line no-mixed-operators
-          setData(res.data.resetDesserts || [])
+          setDesserts(res.data.resetDesserts || [])
         },
         err => {
           console.log(`resetDesserts err: ${JSON.stringify(err, null, '\t')}`)
@@ -107,9 +120,8 @@ const NutritionList = () => {
         variables: {input}
         }).then(
           res => {
-            // eslint-disable-next-line no-mixed-operators
-            setData((prev: any) => [...prev, res.data.addDessert])
-            applyCurrentSort()
+            setNewDessert(res.data.addDessert)
+            sortDesserts()
           },
           err => {
             console.log(`createDessert err: ${JSON.stringify(err, null, '\t')}`)
@@ -122,10 +134,8 @@ const NutritionList = () => {
         variables: {ids: selections}
       }).then(
         res => {
-          // eslint-disable-next-line no-mixed-operators
-          const newData = data.filter((item: IDessert) => res.data.deleteDesserts.indexOf(item.id) === -1 )
-          setData(newData)
-          applyCurrentSort()
+          deleteDesserts(res.data.deleteDesserts)
+          sortDesserts()
         },
         err => {
           console.log(`deleteDessert err: ${JSON.stringify(err, null, '\t')}`)
@@ -136,18 +146,6 @@ const NutritionList = () => {
 
     const onAddDessert = () => {
       setModal(true);
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const applyCurrentSort = () => {
-      setData((prev: any[]) => [...prev.sort((a, b) => {
-        const aValue = typeof a[sortField] === 'string' ? a[sortField].toLowerCase() : a[sortField]
-        const bValue = typeof a[sortField] === 'string' ? b[sortField].toLowerCase() : b[sortField]
-        if(sortAsc) {
-          return aValue > bValue ? 1 : -1
-        }
-        return aValue > bValue ? -1 : 1
-      })])
     }
 
     const allRowsSelect = () => {
@@ -180,7 +178,7 @@ const NutritionList = () => {
       }
       if(target) {
           setSortField(target.getAttribute('id'))
-          setSortAsc(prev => !prev)
+          setSortAsc(!sortAsc)
       }
     }
 
@@ -191,13 +189,13 @@ const NutritionList = () => {
       if(selections.length && selections.length === data.length && !allDessertsSelectorRef.current.checked) {
         allDessertsSelectorRef.current.checked = true
       } 
-    }, [selections]);
+    }, [data.length, selections]);
 
 
     useEffect(() => {
-      applyCurrentSort()
+      sortDesserts()
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    }, [sortField, sortAsc]);
+    }, [sortField, sortAsc, sortDesserts]);
 
   if (modal) {
       return (
@@ -207,13 +205,13 @@ const NutritionList = () => {
       )
     }   
 
-    if (desserts.error || newDessert.error) return <p>ERROR</p>
+    if (desserts.error || newDessert.error || deletedDessert.error || resettedDessert.error) return <p>ERROR</p>
 
     return (
         <>
             <Header onReset={onReset}></Header> 
             <div className="ph2 pv4">
-            <ControlBox selections={selections} onAddDessert={onAddDessert} onDeleteDesserts={onDeleteDesserts} />
+            <ControlBox onAddDessert={onAddDessert} onDeleteDesserts={onDeleteDesserts} />
             <div className="overflow-auto">
                 <table data-testid="nutrition-table" className="f6 f5-l mw-100 w-100">
                 <thead onClick={sortByField}>
@@ -240,7 +238,7 @@ const NutritionList = () => {
                 </thead>
                 <tbody className="bg-double-light-gray lh-copy">
                   {data && data.map((dessert: IDessert) => (
-                      <DessertRow key={`dessert_row_6${dessert.id}`} dessert={dessert} selections={selections} setSelections={setSelections} />
+                      <DessertRow key={`dessert_row_6${dessert.id}`} dessert={dessert} />
                   ))}
                 </tbody>
                 </table>

@@ -1,17 +1,22 @@
-import React, {useEffect, useRef} from "react";
-import { IDessert } from '../types';
+import React, {useEffect, useRef, useContext} from "react";
+import { IDessert, INutritionContext } from '../types';
+import { NutritionContext } from '../context/NutritionContext';
 
 interface Props {
     dessert: IDessert
-    selections: string[]
-    setSelections:  (value: string[] | ((prevVar: string[]) => string[])) => void;
+    // setSelections:  (value: string[] | ((prevVar: string[]) => string[])) => void;
 }
 
 const tdClassNames = 'tc fw6 pv3 bb b--black-20';
 const tdFirstClassNames = `pl3 ${tdClassNames}`
   
-const DessertRow = ({ dessert, selections, setSelections }: Props) => {
+const DessertRow = ({ dessert }: Props) => {
     const selectionRowRef: any = useRef<HTMLInputElement>(null)
+    const {
+        state,
+        setSelections
+      } = useContext<INutritionContext>(NutritionContext)
+      const { selections } = state 
   
     const rowSelect = () => {
         const target = selectionRowRef.current
@@ -19,9 +24,9 @@ const DessertRow = ({ dessert, selections, setSelections }: Props) => {
         const id = target.getAttribute('id');
         target.checked = checked
         if(checked) {
-            setSelections(prev => prev.filter((item: string) => item !== id))
+            setSelections(selections.filter((item: string) => item !== id))
         } else {
-            setSelections(prev => [...prev, id])
+            setSelections([...selections, id])
         }
         target.checked = !target.checked
     }
