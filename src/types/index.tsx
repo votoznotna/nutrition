@@ -16,10 +16,6 @@ export interface INewDessertInput {
     protein: number
 }
 
-export interface IDessertDeleteInput {
-    ids: string[]
-}
-
 export interface INutritionState {
     modal: boolean,
     selections: string[],
@@ -37,4 +33,4 @@ export interface INutritionContext {
     setNewDessert: (value: IDessert) => void,
     setDeletedDesserts: (value: string[]) => void,
     sortDesserts: () => void
-  }
+}
