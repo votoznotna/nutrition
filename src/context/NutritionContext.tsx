@@ -64,8 +64,10 @@ const reducer = (state = defaultNutritionState, action: any) => {
 
   if (action.type === SORT_DESSERTS) {
     const sortedData =  state.data.sort((a:any, b:any) => {
-        const aValue = typeof a[state.sortField] === 'string' ? a[state.sortField as string].toLowerCase() : a[state.sortField]
-        const bValue = typeof a[state.sortField] === 'string' ? b[state.sortField].toLowerCase() : b[state.sortField]
+        let aValue = a[state.sortField] || a.nutritionInfo[state.sortField]
+        let bValue = b[state.sortField] || b.nutritionInfo[state.sortField]
+        aValue = typeof aValue === 'string' ? aValue.toLowerCase() : aValue
+        bValue = typeof bValue === 'string' ? bValue.toLowerCase() : bValue
         if(state.sortAsc) {
           return aValue > bValue ? 1 : -1
         }

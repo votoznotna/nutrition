@@ -27,7 +27,7 @@ const NewDessert: FunctionComponent<IProps> = ({ onAddDessert, onCancel }: IProp
     const onSubmit = (e: any) => {
         e.preventDefault()
 
-        const submitValue: any = {
+        const submitValue: INewDessertInput = {
             name: nameRef.current.value,
             calories: caloriesRef.current.value,
             fat: fatRef.current.value,
@@ -42,28 +42,28 @@ const NewDessert: FunctionComponent<IProps> = ({ onAddDessert, onCancel }: IProp
         }
 
         caloriesRef.current.classList.remove(errorClass)
-        if(!(submitValue.calories.toString().replace(/(^\s+|\s+$)/g,'') && validNumberRegex.test(submitValue.calories))) {
+        if(!(submitValue.calories.toString().replace(/(^\s+|\s+$)/g,'') && validNumberRegex.test(submitValue.calories.toString()))) {
             caloriesRef.current.classList.add(errorClass)
             return
         }
         submitValue.calories = +submitValue.calories
 
         fatRef.current.classList.remove(errorClass)
-        if(!(submitValue.fat.toString().replace(/(^\s+|\s+$)/g,'') && validNumberRegex.test(submitValue.fat))) {
+        if(!(submitValue.fat.toString().replace(/(^\s+|\s+$)/g,'') && validNumberRegex.test(submitValue.fat.toString()))) {
             fatRef.current.classList.add(errorClass)
             return
         }
         submitValue.fat = +submitValue.fat
 
         carbsRef.current.classList.remove(errorClass)
-        if(!(submitValue.carbs.toString().replace(/(^\s+|\s+$)/g,'') && validNumberRegex.test(submitValue.carbs))) {
+        if(!(submitValue.carbs.toString().replace(/(^\s+|\s+$)/g,'') && validNumberRegex.test(submitValue.carbs.toString()))) {
             carbsRef.current.classList.add(errorClass)
             return
         }
         submitValue.carbs = +submitValue.carbs
 
         proteinRef.current.classList.remove(errorClass)
-        if(!(submitValue.protein.toString().replace(/(^\s+|\s+$)/g,'') && validNumberRegex.test(submitValue.protein))) {
+        if(!(submitValue.protein.toString().replace(/(^\s+|\s+$)/g,'') && validNumberRegex.test(submitValue.protein.toString()))) {
             proteinRef.current.classList.add(errorClass)
             return
         }

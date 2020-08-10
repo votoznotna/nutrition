@@ -4,15 +4,19 @@ const typeDefs = gql`
 type Dessert {
   id: ID!
   name: String!
-  calories: Int!
-  fat: Int!
-  carbs: Int!
-  protein: Int!
+  nutritionInfo: NutritionInfo!
   created: String!
 }
 
 input NewDessertInput {
   name: String!
+  calories: Int!
+  fat: Int!
+  carbs: Int!
+  protein: Int!
+}
+
+type NutritionInfo {
   calories: Int!
   fat: Int!
   carbs: Int!

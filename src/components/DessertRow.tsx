@@ -49,10 +49,10 @@ const DessertRow: FunctionComponent<IProps> = ({ dessert }: IProps) => {
                     <input ref={selectionRowRef} className="v-mid" type="checkbox" onChange={rowSelect} id={dessert.id} key={dessert.id} />
                 </td>
                 <td key={`td_name_${dessert.id}`}  className={tdClassNames}>{dessert.name}</td>
-                <td key={`td_calories_${dessert.id}`} className={tdClassNames}>{dessert.calories}</td>
-                <td key={`td_fat_${dessert.id}`} className={tdClassNames}>{dessert.fat}</td>
-                <td key={`td_carbs_${dessert.id}`} className={tdClassNames}>{dessert.carbs}</td>
-                <td key={`td_protein_${dessert.id}`} className={tdClassNames}>{dessert.protein}</td>
+                <td key={`td_calories_${dessert.id}`} className={tdClassNames}>{dessert.nutritionInfo.calories}</td>
+                <td key={`td_fat_${dessert.id}`} className={tdClassNames}>{dessert.nutritionInfo.fat}</td>
+                <td key={`td_carbs_${dessert.id}`} className={tdClassNames}>{dessert.nutritionInfo.carbs}</td>
+                <td key={`td_protein_${dessert.id}`} className={tdClassNames}>{dessert.nutritionInfo.protein}</td>
             </tr>
         </>
     )

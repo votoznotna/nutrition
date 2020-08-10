@@ -1,10 +1,14 @@
-export interface IDessert {
-    id: string,
-    name: string,
+export interface INutritionInfo {
     calories: number,
     fat: number,
     carbs: number,
     protein: number,
+}
+
+export interface IDessert {
+    id: string,
+    name: string,
+    nutritionInfo: INutritionInfo,
     created: number
 }
 
@@ -13,7 +17,7 @@ export interface INewDessertInput {
     calories: number,
     fat: number,
     carbs: number,
-    protein: number
+    protein: number,
 }
 
 export interface INutritionState {

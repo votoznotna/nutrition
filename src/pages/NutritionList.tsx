@@ -12,10 +12,12 @@ const DESSERT_DETAILS = gql`
   fragment DessertDetails on Dessert {
     id
     name
-    calories
-    fat
-    carbs
-    protein
+    nutritionInfo {
+      calories
+      fat
+      carbs
+      protein
+    }
     created
   }
 `

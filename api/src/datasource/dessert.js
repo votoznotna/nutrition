@@ -21,7 +21,17 @@ const createDessertModel = data => {
         return successfullyDeletedIds
     },
     create(dessert) {
-      const newDessert = {id: uuidv1(), created: Date.now().toString(), ...dessert}
+      const newDessert = {id: uuidv1(), created: Date.now().toString(), 
+        ...{
+          name: dessert.name,
+          nutritionInfo: {
+            calories: dessert.calories,
+            fat: dessert.fat,
+            carbs: dessert.carbs,
+            protein: dessert.protein
+          }
+        }
+      }
       data.push(newDessert)
       return newDessert
     },
