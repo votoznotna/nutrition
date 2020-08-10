@@ -1,0 +1,45 @@
+mutation addDessert {
+  addDessert(input: {
+    name: "Mango Mousse Cake",
+    calories: 1234,
+    fat: 2345,
+    carbs: 2435,
+    protein: 14
+  }){
+    id
+    name
+    nutritionInfo {
+        calories
+	    fat
+        carbs
+		protein
+    }
+    created
+  }
+}
+///////////////
+
+mutation resetDesserts {
+  resetDesserts{
+    id
+    name
+    nutritionInfo {
+        calories
+	    fat
+        carbs
+		protein
+    }
+    created
+  }
+}
+
+///////////////
+
+query  {
+  desserts {
+    id
+    nutritionInfo {
+      fat
+    }
+  }
+}
