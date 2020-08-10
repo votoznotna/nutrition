@@ -24,13 +24,13 @@ type NutritionInfo {
 }
 
 type Query {
-  desserts: [Dessert]!
+  desserts: [Dessert!]!
 }
 
 type Mutation {
   addDessert(input: NewDessertInput!): Dessert!
-  deleteDesserts(ids: [String!]!): [String]!
-  resetDesserts: [Dessert]!
+  deleteDesserts(ids: [String!]!): [String!]!
+  resetDesserts: [Dessert!]!
 }
 `;
 
