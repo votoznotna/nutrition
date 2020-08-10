@@ -7,7 +7,6 @@ const server = new ApolloServer({
     cors: true,
     typeDefs,
     resolvers,
-    playground: false,
     context() {
       return {models, datasource}
     }
