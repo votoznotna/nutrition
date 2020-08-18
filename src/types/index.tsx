@@ -1,3 +1,6 @@
+import { dessertList_desserts as IDessert } from '../pages/__generated__/dessertList'
+
+
 export interface INutritionInfo {
     calories: number,
     fat: number,
@@ -5,12 +8,12 @@ export interface INutritionInfo {
     protein: number,
 }
 
-export interface IDessert {
-    id: string,
-    name: string,
-    nutritionInfo: INutritionInfo,
-    created: number
-}
+// export interface IDessert {
+//     id: string,
+//     name: string,
+//     nutritionInfo: INutritionInfo,
+//     created: number
+// }
 
 export interface INewDessertInput {
     name: string,

@@ -1,12 +1,18 @@
 
 const { v1: uuidv1 } = require('uuid')
 const datasource = require('./data.json')
+const timeout = 500
 
-const createDessertModel = data => {
+const createDessertModel = startData => {
+  let data = [...startData]
   return {
     getAll() {
-      return data.sort((a, b) => {
-          return +a.created > +b.created ? -1 : 1
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(data.sort((a, b) => {
+             return +a.created > +b.created ? -1 : 1
+          }))
+        }, timeout)
       })
     },
     delete(ids) {
@@ -36,13 +42,19 @@ const createDessertModel = data => {
       return newDessert
     },
     reset() {
-      const initialData = [...datasource['dessert']]
-      data.length = 0
-      let index = initialData.length
-      while(--index >= 0) {
-        data.unshift(initialData[index])
-      }
-      return data;
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // const initialData = [...datasource['dessert']]
+          // data.length = 0
+          data = [...datasource['dessert']]
+          // let index = initialData.length
+          // while(--index >= 0) {
+          //   data.unshift(initialData[index])
+          // }
+          // console.log(`data: ${JSON.stringify(data, null, '\t')}`)
+          resolve(data)
+        }, timeout)
+      })
     }
   }
 }

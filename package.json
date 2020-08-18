@@ -33,6 +33,8 @@
     "eject": "react-scripts eject",
     "server": "nodemon api/src/server.js",
     "heroku-postbuild": "npm run build",
+    "codegen:schema": "npx apollo client:download-schema --endpoint=http://localhost:4000",
+    "codegen:generate": "npx apollo client:codegen --localSchemaFile=schema.json --includes=src/**/*.tsx --target=typescript",
     "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {

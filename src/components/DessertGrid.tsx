@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useContext, FunctionComponent } from 'react'
-import { IDessert, INutritionContext } from '../types'
+import { INutritionContext } from '../types'
+import { dessertList_desserts as IDessert } from '../pages/__generated__/dessertList'
 import DessertRow from './DessertRow'
 import { NutritionContext } from '../context/NutritionContext'
 

@@ -1,5 +1,6 @@
 import React, { useReducer, createContext, useCallback, FunctionComponent } from 'react'
-import { IDessert, INutritionState, INutritionContext } from '../types'
+import { INutritionState, INutritionContext } from '../types'
+import { dessertList_desserts as IDessert } from '../pages/__generated__/dessertList'
 
 const defaultNutritionState: INutritionState = {
     modal: false,
@@ -63,7 +64,7 @@ const reducer = (state = defaultNutritionState, action: any) => {
   }
 
   if (action.type === SORT_DESSERTS) {
-    const sortedData =  state.data.sort((a:any, b:any) => {
+    const sortedData = state.data.slice().sort((a:any, b:any) => {
         let aValue = a[state.sortField] || a.nutritionInfo[state.sortField]
         let bValue = b[state.sortField] || b.nutritionInfo[state.sortField]
         aValue = typeof aValue === 'string' ? aValue.toLowerCase() : aValue
