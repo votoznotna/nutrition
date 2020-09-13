@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
  
-const Loading: FunctionComponent  = () => {
+const Loading: FC = () => {
 
     return (
         <>

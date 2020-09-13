@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useContext, FunctionComponent } from 'react'
+import React, { useEffect, useRef, useContext, FC } from 'react'
 import { INutritionContext } from '../types'
 import { dessertList_desserts as IDessert } from '../pages/__generated__/dessertList'
 import DessertRow from './DessertRow'
@@ -13,7 +13,7 @@ const thSortableClassNames = `cursor-pointer sortable-column ${thClassNames}`
 const thFirstClassNames = `pl3 ${thClassNames}`
 const thSortIconsClassNames = 'fa fa-sort ml1 v-mid'
 
-const DessertGrid: FunctionComponent<IProps> = () => {
+const DessertGrid: FC = () => {
     const {
         state,
         setSelections,

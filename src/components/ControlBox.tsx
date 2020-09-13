@@ -1,4 +1,4 @@
-import React, { useContext, FunctionComponent } from 'react'
+import React, { useContext, FC } from 'react'
 import { INutritionContext } from '../types'
 import { NutritionContext } from '../context/NutritionContext'
 
@@ -10,7 +10,7 @@ interface IProps {
 const buttonDisableClassNames = 'f6 f5-l fw6 b--disalbe-light-pink pv2 bg-disable-light-pink'
 const buttonEnableClassNames = 'f6 f5-l fw6 b--white pv2 pink bg-white'
   
-const ControlBox: FunctionComponent<IProps> = ({ onAddDessert,  onDeleteDesserts }: IProps) => {
+const ControlBox: FC<IProps> = ({ onAddDessert,  onDeleteDesserts }: IProps) => {
 
     const {
         state

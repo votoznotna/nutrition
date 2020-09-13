@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, FunctionComponent } from 'react'
+import React, { useRef, useState, useEffect, FC } from 'react'
 import { INewDessertInput } from '../types'
 
 interface IProps {
@@ -9,7 +9,7 @@ interface IProps {
 const inputClasses = 'pa2 input-reset black ba bg-transparent w-100'
 const errorClass = 'validation--error'
   
-const NewDessert: FunctionComponent<IProps> = ({ onAddDessert, onCancel }: IProps) => {
+const NewDessert: FC<IProps> = ({ onAddDessert, onCancel }: IProps) => {
 
     const [formValid, setFormValid] = useState(false)
     const nameRef: any = useRef<HTMLInputElement>(null)

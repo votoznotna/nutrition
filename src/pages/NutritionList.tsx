@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, FunctionComponent } from 'react'
+import React, { useEffect, useContext, FC } from 'react'
 import gql from 'graphql-tag'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { INutritionContext } from '../types'
@@ -57,10 +57,7 @@ const CREATE_DESSERT = gql`
   ${DESSERT_DETAILS}
 `
 
-interface IProps {
-}
-
-const NutritionList: FunctionComponent<IProps> = () => {
+const NutritionList: FC = () => {
 
   const {
     state,
@@ -90,19 +87,18 @@ const NutritionList: FunctionComponent<IProps> = () => {
   //   })
 
   const [deleteDessert, {loading: deleteDessertsLoading, error: deleteDessertsError}] = useMutation<DeleteDesserts, DeleteDessertsVariables>(DELETE_DESSERTS)
-  const [resetDessert, {data: resetDessertData, loading: resetDessertLoading, error: resetDessertError}] = useMutation<ResetDesserts>(RESET_DESSERTS)
+  const [resetDessert, {loading: resetDessertLoading, error: resetDessertError}] = useMutation<ResetDesserts>(RESET_DESSERTS, {
+    onCompleted: data => {
+      if (data) {
+        setDesserts(data.resetDesserts)
+      }
+    }})
 
   const desserts = data ? data.desserts : null;
 
   useEffect(() => {
     desserts && setDesserts(desserts)
   }, [desserts, setDesserts])
-
-  const resettedDesserts = resetDessertData ? resetDessertData.resetDesserts : null;
-
-  useEffect(() => {
-    resettedDesserts && setDesserts(resettedDesserts)
-  }, [resettedDesserts, setDesserts])
 
   const onReset = async () => {
     await resetDessert({

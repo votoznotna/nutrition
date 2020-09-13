@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useContext, FunctionComponent} from 'react'
+import React, {useEffect, useRef, useContext, FC} from 'react'
 import { INutritionContext } from '../types'
 import { dessertList_desserts as IDessert } from '../pages/__generated__/dessertList'
 import { NutritionContext } from '../context/NutritionContext'
@@ -11,7 +11,7 @@ interface IProps {
 const tdClassNames = 'tc fw6 pv3 bb b--black-20'
 const tdFirstClassNames = `pl3 ${tdClassNames}`
   
-const DessertRow: FunctionComponent<IProps> = ({ dessert }: IProps) => {
+const DessertRow: FC<IProps> = ({ dessert }: IProps) => {
     const selectionRowRef: any = useRef<HTMLInputElement>(null)
     const {
         state,

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 
 interface IProps {
     onReset: () => void
@@ -7,7 +7,7 @@ interface IProps {
 // const headerStyle: React.CSSProperties = {
 // }
  
-const Header: FunctionComponent<IProps>  = ({ onReset }: IProps) => {
+const Header: FC<IProps>  = ({ onReset }: IProps) => {
 
     return (
         <>
