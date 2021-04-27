@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders page elements as expected 1`] = `
+exports[`<App/> renders page elements as expected 1`] = `
 <div>
   <section
-    class="ph3 f3 f2-m f1-l"
-    style="display: flex; justify-content: space-between; align-items: center;"
+    class="flex items-center justify-between ph3 f2 f1-l"
   >
     <h6
       class="mv0"
@@ -12,7 +11,7 @@ exports[`renders page elements as expected 1`] = `
       Nutrition List
     </h6>
     <button
-      class="f6-m f5-l fw6 pa2 br2 b--dark-green white bg-dark-green"
+      class="f6 f5-l fw6 pa2 br2 b--dark-green white bg-dark-green"
     >
       <i
         aria-hidden="true"
@@ -31,14 +30,14 @@ exports[`renders page elements as expected 1`] = `
     >
       <div>
         <label
-          class="dark-pink f6-m f8-l fw8"
+          class="dark-pink f6 f5-l fw8"
         >
           0 selected
         </label>
       </div>
       <div>
         <button
-          class="f6-m f5-l b--white fw6 ph3 pv2 green mr2 bg-white"
+          class="f6 f5-l b--white fw6 ph3 pv2 green mr2 bg-white"
         >
           <i
             aria-hidden="true"
@@ -49,7 +48,7 @@ exports[`renders page elements as expected 1`] = `
           ADD NEW
         </button>
         <button
-          class="f6-m f5-l fw6 b--disalbe-light-pink pv2 bg-disable-light-pink"
+          class="f6 f5-l fw6 b--disalbe-light-pink pv2 bg-disable-light-pink"
           disabled=""
         >
           <i
@@ -62,91 +61,26 @@ exports[`renders page elements as expected 1`] = `
         </button>
       </div>
     </section>
-    <div
-      class="overflow-auto"
+    <section
+      class="flex items-center dark-gray justify-center pt4 f2 f1-l"
     >
-      <table
-        class="f6-m f8-l mw-100 w-100"
-        data-testid="nutrition-table"
+      <div
+        class="fa-2x"
       >
-        <thead>
-          <tr>
-            <th
-              class="pl3 tc fw6 bb b--black-20 pv3 bg-white"
-            >
-              <input
-                class="pv3 bb b--black-20 v-mid"
-                id="ids"
-                type="checkbox"
-              />
-            </th>
-            <th
-              class="cursor-pointer sortable-column tc fw6 bb b--black-20 pv3 bg-white"
-              data-testid="name"
-              id="name"
-            >
-              Dessert (100g serving)
-              <i
-                aria-hidden="true"
-                class="fa fa-sort ml1 v-mid"
-              />
-            </th>
-            <th
-              class="cursor-pointer sortable-column tc fw6 bb b--black-20 pv3 bg-white"
-              id="calories"
-            >
-              Calories
-              <i
-                aria-hidden="true"
-                class="fa fa-sort ml1 v-mid"
-              />
-            </th>
-            <th
-              class="cursor-pointer sortable-column tc fw6 bb b--black-20 pv3 bg-white"
-              id="fat"
-            >
-              Fat (g)
-              <i
-                aria-hidden="true"
-                class="fa fa-sort ml1 v-mid"
-              />
-            </th>
-            <th
-              class="cursor-pointer sortable-column tc fw6 bb b--black-20 pv3 bg-white"
-              id="carbs"
-            >
-              Carbs (g)
-              <i
-                aria-hidden="true"
-                class="fa fa-sort ml1 v-mid"
-              />
-            </th>
-            <th
-              class="cursor-pointer sortable-column tc fw6 bb b--black-20 pv3 bg-white"
-              id="protein"
-            >
-              Protein (g)
-              <i
-                aria-hidden="true"
-                class="fa fa-sort ml1 v-mid"
-              />
-            </th>
-          </tr>
-        </thead>
-        <tbody
-          class="bg-double-light-gray lh-copy"
+        <i
+          aria-hidden="true"
+          class="fa fa-spinner fa-spin"
         />
-      </table>
-    </div>
+      </div>
+    </section>
   </div>
 </div>
 `;
 
-exports[`renders page elements as expected 2`] = `
+exports[`<App/> renders page elements as expected 2`] = `
 <div>
   <section
-    class="ph3 f3 f2-m f1-l"
-    style="display: flex; justify-content: space-between; align-items: center;"
+    class="flex items-center justify-between ph3 f2 f1-l"
   >
     <h6
       class="mv0"
@@ -154,7 +88,7 @@ exports[`renders page elements as expected 2`] = `
       Nutrition List
     </h6>
     <button
-      class="f6-m f5-l fw6 pa2 br2 b--dark-green white bg-dark-green"
+      class="f6 f5-l fw6 pa2 br2 b--dark-green white bg-dark-green"
     >
       <i
         aria-hidden="true"
@@ -173,14 +107,14 @@ exports[`renders page elements as expected 2`] = `
     >
       <div>
         <label
-          class="dark-pink f6-m f8-l fw8"
+          class="dark-pink f6 f5-l fw8"
         >
           0 selected
         </label>
       </div>
       <div>
         <button
-          class="f6-m f5-l b--white fw6 ph3 pv2 green mr2 bg-white"
+          class="f6 f5-l b--white fw6 ph3 pv2 green mr2 bg-white"
         >
           <i
             aria-hidden="true"
@@ -191,7 +125,7 @@ exports[`renders page elements as expected 2`] = `
           ADD NEW
         </button>
         <button
-          class="f6-m f5-l fw6 b--disalbe-light-pink pv2 bg-disable-light-pink"
+          class="f6 f5-l fw6 b--disalbe-light-pink pv2 bg-disable-light-pink"
           disabled=""
         >
           <i
@@ -208,7 +142,7 @@ exports[`renders page elements as expected 2`] = `
       class="overflow-auto"
     >
       <table
-        class="f6-m f8-l mw-100 w-100"
+        class="f6 f5-l mw-100 w-100"
         data-testid="nutrition-table"
       >
         <thead>
@@ -277,7 +211,44 @@ exports[`renders page elements as expected 2`] = `
         </thead>
         <tbody
           class="bg-double-light-gray lh-copy"
-        />
+        >
+          <tr>
+            <td
+              class="pl3 tc fw6 pv3 bb b--black-20"
+            >
+              <input
+                class="v-mid"
+                id="fafa6860-d77d-11ea-9788-ad71c48281af"
+                type="checkbox"
+              />
+            </td>
+            <td
+              class="tc fw6 pv3 bb b--black-20"
+            >
+              KitKat
+            </td>
+            <td
+              class="tc fw6 pv3 bb b--black-20"
+            >
+              518
+            </td>
+            <td
+              class="tc fw6 pv3 bb b--black-20"
+            >
+              26
+            </td>
+            <td
+              class="tc fw6 pv3 bb b--black-20"
+            >
+              65
+            </td>
+            <td
+              class="tc fw6 pv3 bb b--black-20"
+            >
+              60
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
